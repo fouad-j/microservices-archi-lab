@@ -27,7 +27,8 @@ public class OrderController {
 
     @GetMapping(value = "/orders/{orderId}")
     public Order getOrder(@PathVariable int orderId) {
-        return ordersRepository.findById(orderId)
-                .orElseThrow(() -> new OrderNotFoundException("Order doesn't exist"));
+//        return ordersRepository.findById(orderId)
+//                .orElseThrow(() -> new OrderNotFoundException("Order doesn't exist"));
+    return null;
     }
 }

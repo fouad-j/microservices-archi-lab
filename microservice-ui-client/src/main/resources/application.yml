@@ -1,0 +1,4 @@
+remotes:
+  products.url: localhost:9010
+  payments.url: localhost:9003
+  orders.url: localhost:9002

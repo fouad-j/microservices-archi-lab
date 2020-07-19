@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "microservice-products", url = "${remotes.products.url}", decode404 = true)
+@FeignClient(name = "microservice-products", url = "${remotes.products.url}")
 public interface ProductProvider {
 
     @GetMapping(value = "/products")

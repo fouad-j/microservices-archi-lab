@@ -1,7 +1,7 @@
 package com.mproduits.web.controller;
 
-import com.mproduits.dao.ProductDao;
 import com.mproduits.model.Product;
+import com.mproduits.repository.ProductRepository;
 import com.mproduits.web.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,35 +9,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ProductController {
 
     @Autowired
-    ProductDao productDao;
+    ProductRepository productRepository;
 
-    // Affiche la liste de tous les produits disponibles
-    @GetMapping(value = "/Produits")
-    public List<Product> listeDesProduits(){
+    @GetMapping(value = "/products")
+    public List<Product> productsList() {
 
-        List<Product> products = productDao.findAll();
+        List<Product> products = productRepository.findAll();
 
-        if(products.isEmpty()) throw new ProductNotFoundException("Aucun produit n'est disponible à la vente");
+        if (products.isEmpty()) throw new ProductNotFoundException("Stock is empty");
 
         return products;
-
     }
 
-    //Récuperer un produit par son id
-    @GetMapping( value = "/Produits/{id}")
-    public Optional<Product> recupererUnProduit(@PathVariable int id) {
+    @GetMapping(value = "/products/{productId}")
+    public Product getProduct(@PathVariable int productId) {
 
-        Optional<Product> product = productDao.findById(id);
-
-        if(!product.isPresent())  throw new ProductNotFoundException("Le produit correspondant à l'id " + id + " n'existe pas");
-
-        return product;
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product " + productId + " doesn't exist"));
     }
 }
 

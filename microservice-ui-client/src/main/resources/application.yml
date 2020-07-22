@@ -1,4 +1,14 @@
-remotes:
-  products.url: localhost:9010
-  orders.url: localhost:9011
-  payments.url: localhost:9012
+#spring:
+#  application:
+#    name: ui-client
+#  profiles:
+#    active: native
+#  cloud:
+#    config:
+#      uri: http://localhost:9050
+#      fail-fast: true
+#
+##remotes:
+##  products.url: localhost:9010
+##  orders.url: localhost:9011
+##  payments.url: localhost:9012

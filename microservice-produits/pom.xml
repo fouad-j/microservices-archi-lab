@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mproduits</name>
+	<name>microservice-products</name>
 	<description>Microservice de gestion des produits</description>
 
 	<parent>

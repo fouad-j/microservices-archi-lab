@@ -1,0 +1,12 @@
+spring.application.name: config-server
+
+server.port: 9050
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          fail-on-error: true
+          search-locations: classpath:/config/
